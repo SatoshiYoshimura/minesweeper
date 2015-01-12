@@ -1,7 +1,6 @@
-//後回し
 var Explode  = Class.create(Sprite,{
   initialize: function(){
-    Sprite.call(this,56.25,56);
+    Sprite.call(this,SpriteSize.explode.w,SpriteSize.explode.h);
     this.frame = 1;
     this.image = GAME.assets[ImagePath.explode];
     this.num = 1;
@@ -13,8 +12,6 @@ var Explode  = Class.create(Sprite,{
   },
   ontouchend: function(){
     console.log("aa");
-    currentStage.push(block);
-    this.parentNode.addChild(block);
    // var block = new Block('white');
    // block.x = this.x;
    // block.y = this.y;

@@ -3,6 +3,7 @@ var Mine  = Class.create(Sprite,{
     Sprite.call(this,32,32);
 
     this.image = GAME.assets[ImagePath.mine];
+    this.className = "Mine";
   },
   ontouchstart: function(e){
     this.startEvent = e;
