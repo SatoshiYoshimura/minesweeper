@@ -1,6 +1,6 @@
 var Explode  = Class.create(Sprite,{
   initialize: function(){
-    Sprite.call(this,SpriteSize.explode.w,SpriteSize.explode.h);
+    Sprite.call(this,SpriteSize.explode.x,SpriteSize.explode.y);
     this.frame = 1;
     this.image = GAME.assets[ImagePath.explode];
     this.num = 1;

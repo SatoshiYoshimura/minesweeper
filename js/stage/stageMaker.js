@@ -4,13 +4,16 @@
  ****/
 function stageMaker(maxX,maxY,scene, mineNumber ){
 
-  //マスのグループと地雷のグループ
+  //マスのグループ
   var massGroup = new Group();
+  //地雷のグループ
   var mineGroup = new Group();
+  var numberGroup = new Group();
 
   // 初期シードを生成
   var unixTimestamp = Math.round( new Date().getTime() / 1000 );
   //地雷マスを設定
+  //TODO 地雷マスがかぶる可能性がある
   var mineNumberArray = new Array(mineNumber);
   for(var i = mineNumber; i--;){
     //疑似乱数を設定
@@ -25,28 +28,47 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
   //縦×横ループでステージ生成
   for(var x = maxX; x--;){
     for(var y = maxY; y--;){
-      //地雷を追加
-      for(var i = mineNumber; i--;){
-        //地雷設定とかぶったマス目に地雷置く
-        if(mineNumberArray[i].x == x && mineNumberArray[i].y == y ){
-          var mine = new Mine();
-          mine.y = (SpriteSize.mine.w * y) + 10;
-          mine.x = (SpriteSize.mine.h * x) + 10;
-          mine._style.zIndex = 1;
-          mineGroup.addChild(mine);
-          scene.addChild(mineGroup);
-        }
-      }
-
- //     //マスを追加
- //     var mass = new Mass(mine);
- //     //マスの横幅横に
- //     mass.y = (SpriteSize.mass.w * y);
- //     mass.x = (SpriteSize.mass.h * x);
- //     mass._style.zIndex = 2;
- //     massGroup.addChild(mass);
- //     scene.addChild(massGroup);
+      //マスを追加
+      var mass = new Mass();
+      mass.y = (SpriteSize.mass.w * y + 200);
+      mass.x = (SpriteSize.mass.h * x + 200);
+      mass._style.zIndex = 2;
+      massGroup.addChild(mass);
+      MASSARRAY[x][y] = mass;
     }
   }
+  scene.addChild(massGroup);
 
+  //地雷を設置
+  for(var i = mineNumber; i--;){
+    //地雷設定と被ったマス目に地雷置く
+    var mine = new Mine();
+    mine.y = (SpriteSize.mine.h + (SpriteSize.mine.h * ( mineNumberArray[i].y - 1 )));
+    mine.x = (SpriteSize.mine.w + (SpriteSize.mine.w * ( mineNumberArray[i].x - 1 )))
+    mine._style.zIndex = 1;
+    //地雷をマスに登録
+    MASSARRAY[mineNumberArray[i].x][mineNumberArray[i].y].contents = mine;
+    console.log("x:" + mineNumberArray[i].x + ", y:" + mineNumberArray[i].y )
+    mineGroup.addChild(mine);
+  }
+
+  //数値を設置
+  for(var x = maxX; x--;){
+    for(var y = maxY; y--;){
+      if(MASSARRAY[x][y].contents == null ){
+        var numberObj = new NumberObj();
+        numberObj.xPos = x;
+        numberObj.yPos = y;
+        numberObj.x = SpriteSize.numberObj.w * x;
+        numberObj.y = SpriteSize.numberObj.h * y;
+        //TODO 先にcontentsを入れないとエラーになる
+        console.log(MASSARRAY[x][y].contents);
+        MASSARRAY[x][y].contents = numberObj;
+        numberGroup.addChild(numberObj);
+        scene.addChild(numberObj);
+      }
+    }
+  }
+  scene.addChild(mineGroup);
+  settingNumber();  
 }

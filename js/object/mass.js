@@ -1,5 +1,5 @@
 var Mass  = Class.create(Sprite,{
-  initialize: function(content){
+  initialize: function(){
     Sprite.call(this,SpriteSize.mass.w,SpriteSize.mass.h);
     this.frame = 1;
     this.image = GAME.assets[ImagePath.mass];
@@ -7,7 +7,7 @@ var Mass  = Class.create(Sprite,{
     this.count = 0;
     this.explode_flg = false;
     //地雷もしくは数字が入る
-    this.contents = content;
+    this.contents = null;
   },
   ontouchstart: function(e){
     this.startEvent = e;
