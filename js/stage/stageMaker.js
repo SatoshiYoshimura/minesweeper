@@ -12,26 +12,16 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
   var mineGroup = new Group();
   var numberGroup = new Group();
 
-  // 初期シードを生成
-  var unixTimestamp = Math.round( new Date().getTime() / 1000 );
   //地雷マスを設定
   //TODO 地雷マスがかぶる可能性がある
-  var mineNumberArray = new Array(mineNumber);
-  for(var i = mineNumber; i--;){
-    //疑似乱数を設定
-    var mineNumberObj = {x:0,y:0};
-    var mt_obj = MersenneTwisterInitialize(i * unixTimestamp);
-    mineNumberObj.x = Math.abs(MersenneTwisterGetInt32(mt_obj)) % maxX;
-    mineNumberObj.y = Math.abs(MersenneTwisterGetInt32(mt_obj)) % maxY;
-    mineNumberArray[i] = mineNumberObj;
-  }
+  var mineNumberArray = setMinePos(mineNumber,maxX,maxY);
 
   //マスを作成
   //縦×横ループでステージ生成
   for(var x = maxX; x--;){
     for(var y = maxY; y--;){
       //マスを追加
-      var mass = new Mass(scene);
+      var mass = new Mass(scene,massGroup);
       mass.y = (SpriteSize.mass.w * y );
       mass.x = (SpriteSize.mass.h * x );
       massGroup.addChild(mass);

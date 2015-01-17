@@ -19,7 +19,7 @@ window.onload = function () {
     mainScene.backgroundColor  = '#7ecef4';
 
     //5は入力察せる
-    stageMaker(5,5,mainScene,10);
+    stageMaker(5,5,mainScene,5);
 
    // var kuma = new Sprite(32, 32);  // ...(1)
    // kuma.image = GAME.assets['./img/numbers/002.png']; // ...(2)
