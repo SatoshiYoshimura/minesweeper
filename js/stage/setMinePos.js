@@ -22,7 +22,7 @@ function setMinePos(mineNumber,maxX,maxY){
         var mineNumber = { x:mineNumberArray[i].x, y:mineNumbeArray[i].y };
         for(var checkI = mineNumber - 1; checkI--;){
           var checkMine = { x:mineNumberArray[checkI].x, y:mineNumbeArray[checkI].y };
-          //被った場合
+          //被った場合入れ替えてもう一度行う
           if(mineNumber.x == checkMine.x && mineNumber.y == checkMine.y ){
             mineNumbeArray[i] = makeMineNumberObj();
             checkSameMine();

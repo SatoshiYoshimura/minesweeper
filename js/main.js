@@ -63,6 +63,8 @@ window.onload = function () {
     startButton = new StartButton("GameStart",inputX, inputY, inputMine );
     startScene.addChild(startButton);
 
+    var test = new MassGroup();
+
     GAME.pushScene(startScene);
   }
   GAME.debug();

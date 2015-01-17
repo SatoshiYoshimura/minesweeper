@@ -7,9 +7,10 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
   //ステージのグループ
   var stageGroup = new Group();
   //マスのグループ
-  var massGroup = new Group();
+  var massGroup = new MassGroup(scene);
   //地雷のグループ
   var mineGroup = new Group();
+  //数字のグループ
   var numberGroup = new Group();
 
   //地雷マスを設定
@@ -20,7 +21,7 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
   for(var x = maxX; x--;){
     for(var y = maxY; y--;){
       //マスを追加
-      var mass = new Mass(scene,massGroup);
+      var mass = new Mass(scene,massGroup,maxX,maxY);
       mass.y = (SpriteSize.mass.w * y );
       mass.x = (SpriteSize.mass.h * x );
       massGroup.addChild(mass);
