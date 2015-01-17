@@ -1,5 +1,5 @@
 var NumberObj  = Class.create(Sprite,{
-  initialize: function(){
+  initialize: function(maxX, maxY){
     Sprite.call(this,SpriteSize.numberObj.w,SpriteSize.numberObj.h);
 
     this.image = GAME.assets[ImagePath.one];
@@ -7,6 +7,8 @@ var NumberObj  = Class.create(Sprite,{
     this.xPos = null;
     this.yPos = null;
     this.count = 0;
+    this.maxX = maxX;
+    this.maxY = maxY;
   },
   ontouchstart: function(e){
     this.startEvent = e;
@@ -24,7 +26,6 @@ var NumberObj  = Class.create(Sprite,{
   },
   countMine: function(){
     //周囲1マスを調べる
-    //TODO マジックナンバー
     this.decisionXpos();
 
     switch (this.count){
@@ -61,7 +62,7 @@ var NumberObj  = Class.create(Sprite,{
     if( this.xPos - 1 >= 0){
       this.decisionYpos(this.xPos - 1);
     }
-    if(this.xPos + 1 <= 4 ){
+    if(this.xPos + 1 <= this.maxX - 1 ){
       this.decisionYpos(this.xPos + 1);
     }
     this.decisionYpos(this.xPos);
@@ -70,7 +71,7 @@ var NumberObj  = Class.create(Sprite,{
       if( this.yPos - 1 >= 0){
         this.searchMine(xNum, this.yPos - 1);
       }
-      if(this.yPos + 1 <= 4){
+      if(this.yPos + 1 <= this.maxY - 1){
         this.searchMine(xNum, this.yPos + 1);
       }
       this.searchMine(xNum, this.yPos);

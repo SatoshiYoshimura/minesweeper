@@ -43,7 +43,7 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
   for(var x = maxX; x--;){
     for(var y = maxY; y--;){
       if(MASSARRAY[x][y].contents == null ){
-        var numberObj = new NumberObj();
+        var numberObj = new NumberObj(maxX, maxY);
         numberObj.xPos = x;
         numberObj.yPos = y;
         numberObj.x = SpriteSize.numberObj.w * x;
@@ -58,5 +58,5 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
   stageGroup.addChild(mineGroup);
   stageGroup.addChild(massGroup);
   scene.addChild(stageGroup);
-  settingNumber();
+  settingNumber(maxX,maxY);
 }
