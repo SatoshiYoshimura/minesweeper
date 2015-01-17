@@ -12,7 +12,6 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
   var mineGroup = new Group();
   //数字のグループ
   var numberGroup = new Group();
-
   //地雷マスを設定
   var mineNumberArray = setMinePos(mineNumber,maxX,maxY);
 
@@ -21,7 +20,7 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
   for(var x = maxX; x--;){
     for(var y = maxY; y--;){
       //マスを追加
-      var mass = new Mass(scene,massGroup,maxX,maxY);
+      var mass = new Mass(scene,massGroup,maxX,maxY, x, y);
       mass.y = (SpriteSize.mass.w * y );
       mass.x = (SpriteSize.mass.h * x );
       massGroup.addChild(mass);
@@ -57,7 +56,14 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
   }
   stageGroup.addChild(numberGroup);
   stageGroup.addChild(mineGroup);
+  //追加前に隣接用のチェック配列を用意
+  massGroup.checkedMassArray = new Array(Number(maxX));
+  for(var i = massGroup.checkedMassArray.length; i--;){
+    massGroup.checkedMassArray[i] = new Array(Number(maxY));
+  }
+  console.log(massGroup.checkedMassArray);
   stageGroup.addChild(massGroup);
   scene.addChild(stageGroup);
+  //数値を設定
   settingNumber(maxX,maxY);
 }

@@ -9,6 +9,8 @@ var MassGroup  = Class.create(Group,{
     this.safeMassCount = 0;
     //開いているマスの数
     this.openMassCount = 0;
+    //Massのdecisionチェック済み配列
+    this.checkedMassArray = null;
   },
   //地雷を抱えていないマスを集約
   collectNonMine: function collectNoneMine(){

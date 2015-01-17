@@ -2,7 +2,7 @@ enchant();
 window.onload = function () {
   GAME = new Game(640, 900);
   GAME.fps = 30;
-  GAME.preload(ImagePath.flag, ImagePath.zero,ImagePath.mine,ImagePath.explode,ImagePath.mass,ImagePath.one,ImagePath.two,ImagePath.three,ImagePath.four,ImagePath.five,ImagePath.six,ImagePath.seven,ImagePath.eight,ImagePath.nine ); // pre（前）-load（読み込み）：ゲームに使う素材をあらかじめ読み込んでおきます。
+  GAME.preload(ImagePath.flag, ImagePath.zero,ImagePath.mine,ImagePath.explode,ImagePath.mass,ImagePath.one,ImagePath.two,ImagePath.three,ImagePath.four,ImagePath.five,ImagePath.six,ImagePath.seven,ImagePath.eight,ImagePath.nine );
   GAME.onload = function () {
 
     GAME.rootScene.backgroundColor = 'white';
