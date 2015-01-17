@@ -7,6 +7,7 @@ var NumberObj  = Class.create(Sprite,{
     this.xPos = null;
     this.yPos = null;
     this.count = 0;
+    this._style.zIndex = 2;
   },
   ontouchstart: function(e){
     this.startEvent = e;

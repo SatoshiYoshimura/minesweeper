@@ -4,6 +4,8 @@
  ****/
 function stageMaker(maxX,maxY,scene, mineNumber ){
 
+  //ステージのグループ
+  var stageGroup = new Group();
   //マスのグループ
   var massGroup = new Group();
   //地雷のグループ
@@ -30,14 +32,13 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
     for(var y = maxY; y--;){
       //マスを追加
       var mass = new Mass(scene);
-      mass.y = (SpriteSize.mass.w * y + 200);
-      mass.x = (SpriteSize.mass.h * x + 200);
-      mass._style.zIndex = 2;
+      mass.y = (SpriteSize.mass.w * y );
+      mass.x = (SpriteSize.mass.h * x );
       massGroup.addChild(mass);
       MASSARRAY[x][y] = mass;
     }
   }
-  scene.addChild(massGroup);
+  //scene.addChild(massGroup);
 
   //地雷を設置
   for(var i = mineNumber; i--;){
@@ -45,7 +46,6 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
     var mine = new Mine();
     mine.y = (SpriteSize.mine.h + (SpriteSize.mine.h * ( mineNumberArray[i].y - 1 )));
     mine.x = (SpriteSize.mine.w + (SpriteSize.mine.w * ( mineNumberArray[i].x - 1 )))
-    mine._style.zIndex = 1;
     //地雷をマスに登録
     MASSARRAY[mineNumberArray[i].x][mineNumberArray[i].y].contents = mine;
     mineGroup.addChild(mine);
@@ -63,10 +63,13 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
         //TODO 先にcontentsを入れないとエラーになる
         MASSARRAY[x][y].contents = numberObj;
         numberGroup.addChild(numberObj);
-        scene.addChild(numberObj);
+        //scene.addChild(numberObj);
       }
     }
   }
-  scene.addChild(mineGroup);
+  stageGroup.addChild(numberGroup);
+  stageGroup.addChild(mineGroup);
+  stageGroup.addChild(massGroup);
+  scene.addChild(stageGroup);
   settingNumber();
 }

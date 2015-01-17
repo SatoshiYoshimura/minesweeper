@@ -5,7 +5,7 @@ var Mass  = Class.create(Sprite,{
     this.image = GAME.assets[ImagePath.mass];
     this.num = 1;
     this.count = 0;
-    this.explode_flg = false;
+    this._style.zIndex = 5;
     //地雷もしくは数字が入る
     this.contents = null;
     this.currentScene = scene;
@@ -23,17 +23,5 @@ var Mass  = Class.create(Sprite,{
     }
   },
   onenterframe: function(){
-//    if(this.explode_flg == false){
-//      if(this.count == 1){
-//        //カウンター戻す
-//        this.count = 0;
-//        if(this.frame == 14)
-//        {
-//          this.explode_flg = true;
-//        }
-//        this.frame += this.num;
-//      }
-//      this.count++;
-//    }
   }
 });
