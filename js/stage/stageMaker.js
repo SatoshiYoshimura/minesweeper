@@ -29,7 +29,7 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
   for(var x = maxX; x--;){
     for(var y = maxY; y--;){
       //マスを追加
-      var mass = new Mass();
+      var mass = new Mass(scene);
       mass.y = (SpriteSize.mass.w * y + 200);
       mass.x = (SpriteSize.mass.h * x + 200);
       mass._style.zIndex = 2;
@@ -48,7 +48,6 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
     mine._style.zIndex = 1;
     //地雷をマスに登録
     MASSARRAY[mineNumberArray[i].x][mineNumberArray[i].y].contents = mine;
-    console.log("x:" + mineNumberArray[i].x + ", y:" + mineNumberArray[i].y )
     mineGroup.addChild(mine);
   }
 
@@ -62,7 +61,6 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
         numberObj.x = SpriteSize.numberObj.w * x;
         numberObj.y = SpriteSize.numberObj.h * y;
         //TODO 先にcontentsを入れないとエラーになる
-        console.log(MASSARRAY[x][y].contents);
         MASSARRAY[x][y].contents = numberObj;
         numberGroup.addChild(numberObj);
         scene.addChild(numberObj);
@@ -70,5 +68,5 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
     }
   }
   scene.addChild(mineGroup);
-  settingNumber();  
+  settingNumber();
 }

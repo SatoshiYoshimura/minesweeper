@@ -20,11 +20,11 @@ var NumberObj  = Class.create(Sprite,{
     else if(MASSARRAY[xNum][yNum].contents.className == "Mine")
     {
       this.count++;
-    }    
+    }
   },
   countMine: function(){
     //周囲1マスを調べる
-    //TODO マジックナンバー 
+    //TODO マジックナンバー
     this.decisionXpos();
 
     switch (this.count){
@@ -56,7 +56,6 @@ var NumberObj  = Class.create(Sprite,{
         this.image = GAME.assets[ImagePath.eight];
         break;
     }
-    console.log(this.count);
   },
   decisionXpos: function(){
     if( this.xPos - 1 >= 0){
@@ -75,5 +74,5 @@ var NumberObj  = Class.create(Sprite,{
         this.searchMine(xNum, this.yPos + 1);
       }
       this.searchMine(xNum, this.yPos);
-  } 
+  }
 });

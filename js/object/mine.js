@@ -9,8 +9,6 @@ var Mine  = Class.create(Sprite,{
     this.startEvent = e;
   },
   ontouchend: function(){
-    var explode = new Explode();
-    this.parentNode.addChild(explode);
    // var block = new Block('white');
    // block.x = this.x;
    // block.y = this.y;

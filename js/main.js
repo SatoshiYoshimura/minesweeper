@@ -28,7 +28,7 @@ window.onload = function () {
    // kuma._style.zIndex = 1;
    // debugger
    // mainScene.addChild(kuma);
-
+//    CURRENTSCENE = mainScene;
     GAME.pushScene(mainScene);
   }
   GAME.debug();
