@@ -4,5 +4,3 @@
   for(var y = 5; y--;){
     MASSARRAY[y] = new Array(5);
   }
-
-  var CURRENTSCENE = null;

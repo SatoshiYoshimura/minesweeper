@@ -13,7 +13,6 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
   var numberGroup = new Group();
 
   //地雷マスを設定
-  //TODO 地雷マスがかぶる可能性がある
   var mineNumberArray = setMinePos(mineNumber,maxX,maxY);
 
   //マスを作成
@@ -28,7 +27,6 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
       MASSARRAY[x][y] = mass;
     }
   }
-  //scene.addChild(massGroup);
 
   //地雷を設置
   for(var i = mineNumber; i--;){
@@ -53,7 +51,6 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
         //TODO 先にcontentsを入れないとエラーになる
         MASSARRAY[x][y].contents = numberObj;
         numberGroup.addChild(numberObj);
-        //scene.addChild(numberObj);
       }
     }
   }

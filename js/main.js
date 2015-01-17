@@ -2,7 +2,7 @@ enchant();
 window.onload = function () {
   GAME = new Game(640, 900);
   GAME.fps = 30;
-  GAME.preload(ImagePath.zero,ImagePath.mine,ImagePath.explode,ImagePath.mass,ImagePath.one,ImagePath.two,ImagePath.three,ImagePath.four,ImagePath.five,ImagePath.six,ImagePath.seven,ImagePath.eight,ImagePath.nine ); // pre（前）-load（読み込み）：ゲームに使う素材をあらかじめ読み込んでおきます。
+  GAME.preload(ImagePath.flag, ImagePath.zero,ImagePath.mine,ImagePath.explode,ImagePath.mass,ImagePath.one,ImagePath.two,ImagePath.three,ImagePath.four,ImagePath.five,ImagePath.six,ImagePath.seven,ImagePath.eight,ImagePath.nine ); // pre（前）-load（読み込み）：ゲームに使う素材をあらかじめ読み込んでおきます。
   GAME.onload = function () {
 
     GAME.rootScene.backgroundColor = 'white';
@@ -18,7 +18,8 @@ window.onload = function () {
 
     mainScene.backgroundColor  = '#7ecef4';
 
-    //5は入力察せる
+    //5は入力値
+    //TODO initにも５ある
     stageMaker(5,5,mainScene,5);
 
    // var kuma = new Sprite(32, 32);  // ...(1)
