@@ -25,7 +25,6 @@ function SetMinePos(mineNumber,maxX,maxY){
 
     this.checkSameMine = function checkSameMine (checkMineNumber){
       var self = this;
-      console.log(checkMineNumber);
       //既存のと被ってないか調べる
       for(var i = 0; i <= checkMineNumber; i++){
         var mineNumberObj = this.mineNumberArray[i];
@@ -34,8 +33,6 @@ function SetMinePos(mineNumber,maxX,maxY){
           //被った場合入れ替えてもう一度行う
           if(mineNumberObj.x == checkMine.x && mineNumberObj.y == checkMine.y ){
             this.mineNumberArray[i] = this.makeMineNumberObj(i);
-            console.log(mineNumberObj);
-            console.log(checkMine);
             setTimeout(self.checkSameMine(i),5);
           }
         }
