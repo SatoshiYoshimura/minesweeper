@@ -59,8 +59,8 @@ var StartButton  = Class.create(Sprite,{
       mineErrorLabel.y = 320;
       this.parentNode.addChild(mineErrorLabel);
       this.isMineError = true;
-    }else if( this.maxMine.value > (this.maxX.value * this.maxY.value) / 2 ){
-      var mineErrorLabel = new Label("地雷数は縦x横の半分以下を入力してください");
+    }else if( this.maxMine.value >= (this.maxX.value * this.maxY.value) / 2 ){
+      var mineErrorLabel = new Label("地雷数は縦x横の半分未満を入力してください");
       mineErrorLabel.font = "14px cursive";
       mineErrorLabel.x = 350;
       mineErrorLabel.y = 350;
