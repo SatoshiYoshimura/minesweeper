@@ -19,16 +19,18 @@ var Explode  = Class.create(Sprite,{
         if(this.frame == 14)
         {
           this.isExplode = true;
+          GAME.assets[SoundPath.explode].play();
           //ゲームオーバー表示
           var gameOverLabel = new Label("GameOver");
-          gameOverLabel.x = 320;
-          gameOverLabel.font = "40px cursive";
+          gameOverLabel.x = 680;
+          gameOverLabel.font = "25px cursive";
           this.currentScene.addChild(gameOverLabel);
-          gameOverLabel.tl.moveTo(320, 120, 50, enchant.Easing.BOUNCE_EASEOUT);
-          //マスを消す
-         // for(var i = this.maxX * this.maxY; i--;){
-         //    removeChild(this.massGroup.childNodes[i]);
-         // }
+          gameOverLabel.tl.moveTo(680, 320, 50, enchant.Easing.BOUNCE_EASEOUT).delay(30).then(function(){
+            GAME.assets[SoundPath.gameOver].play();
+          })
+          .moveTo(680, 200, 80, enchant.Easing.QUAD_EASEIN ).delay(30).then(function(){
+            gameOverLabel.text = "画面更新で再挑戦";
+          });
           this.massGroup.removeAllMass();
           this.scene.removeChild(this);
         }

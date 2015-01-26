@@ -13,7 +13,8 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
   //数字のグループ
   var numberGroup = new Group();
   //地雷マスを設定
-  var mineNumberArray = setMinePos(mineNumber,maxX,maxY);
+  var setMinePos = new SetMinePos(mineNumber,maxX,maxY);
+  var mineNumberArray = setMinePos.getMineNumberArray();
 
   //マスを作成
   //縦×横ループでステージ生成
@@ -21,8 +22,8 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
     for(var y = maxY; y--;){
       //マスを追加
       var mass = new Mass(scene,massGroup,maxX,maxY, x, y);
-      mass.y = (SpriteSize.mass.w * y );
-      mass.x = (SpriteSize.mass.h * x );
+      mass.y = (SpriteSize.mass.w * y ) + 30;
+      mass.x = (SpriteSize.mass.h * x ) + 100;
       massGroup.addChild(mass);
       MASSARRAY[x][y] = mass;
     }
@@ -32,8 +33,8 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
   for(var i = mineNumber; i--;){
     //地雷設定と被ったマス目に地雷置く
     var mine = new Mine();
-    mine.y = (SpriteSize.mine.h + (SpriteSize.mine.h * ( mineNumberArray[i].y - 1 )));
-    mine.x = (SpriteSize.mine.w + (SpriteSize.mine.w * ( mineNumberArray[i].x - 1 )))
+    mine.y = (SpriteSize.mine.h + (SpriteSize.mine.h * ( mineNumberArray[i].y - 1 ))) + 30;
+    mine.x = (SpriteSize.mine.w + (SpriteSize.mine.w * ( mineNumberArray[i].x - 1 ))) + 100
     //地雷をマスに登録
     MASSARRAY[mineNumberArray[i].x][mineNumberArray[i].y].contents = mine;
     mineGroup.addChild(mine);
@@ -46,8 +47,8 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
         var numberObj = new NumberObj(maxX, maxY);
         numberObj.xPos = x;
         numberObj.yPos = y;
-        numberObj.x = SpriteSize.numberObj.w * x;
-        numberObj.y = SpriteSize.numberObj.h * y;
+        numberObj.x = SpriteSize.numberObj.w * x + 100;
+        numberObj.y = SpriteSize.numberObj.h * y + 30;
         //TODO 先にcontentsを入れないとエラーになる
         MASSARRAY[x][y].contents = numberObj;
         numberGroup.addChild(numberObj);
@@ -61,7 +62,6 @@ function stageMaker(maxX,maxY,scene, mineNumber ){
   for(var i = massGroup.checkedMassArray.length; i--;){
     massGroup.checkedMassArray[i] = new Array(Number(maxY));
   }
-  console.log(massGroup.checkedMassArray);
   stageGroup.addChild(massGroup);
   scene.addChild(stageGroup);
   //数値を設定

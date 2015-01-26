@@ -38,9 +38,21 @@ var MassGroup  = Class.create(Group,{
   //マスが開いたときに発行
   onopenmass: function(){
     this.openMassCount++;
-    if(this.openMassCount >= this.safeMassCount){
+    if(this.openMassCount > this.safeMassCount){
+      console.log(this.openMassCount);
+      console.log(this.safeMassCount);
       var gameClearLabel = new Label("GameClear");
+      gameClearLabel.x = 680;
+      gameClearLabel.y = 200;
+      gameClearLabel.font = "25px cursive";
+      var descLabel = new Label("画面更新でリトライ");
+      descLabel.x = 680;
+      descLabel.y = 250;
+      descLabel.font = "25px cursive";
       this.currentScene.addChild(gameClearLabel);
+      this.currentScene.addChild(descLabel);
+      GAME.assets[SoundPath.clear].play();
+      GAME.pause();
     }
   }
 });

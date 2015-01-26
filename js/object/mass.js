@@ -59,7 +59,6 @@ var Mass  = Class.create(Sprite,{
       if(this.group.checkedMassArray[xNum][yNum]){
         return;
       }
-      console.log("xNum:"+ xNum + "yNum" + yNum);
       //TODO Mass.content == 地雷か数字しかない前提
       if(MASSARRAY[xNum][yNum].contents.count == 0)
       {
@@ -71,7 +70,8 @@ var Mass  = Class.create(Sprite,{
       }
       //マスを空ける
       this.group.nonMineGroup.removeChild(MASSARRAY[xNum][yNum]);
-      //チェック済みにする
+      var e = new enchant.Event("openmass");
+      this.group.dispatchEvent(e);
     }
   },
   decisionXpos: function(){
