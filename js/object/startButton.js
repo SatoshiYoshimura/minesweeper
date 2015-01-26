@@ -16,8 +16,8 @@ var StartButton  = Class.create(Sprite,{
   },
   ontouchend: function(){
     //最大値最小値チェック
-    if(this.maxX.value <= 0 || this.maxX.value== null || this.maxX.value == undefined || this.maxX.value == ""){
-      var xErrorLabel = new Label("横を１以上入力してください");
+    if(this.maxX.value <= 1 || this.maxX.value== null || this.maxX.value == undefined || this.maxX.value == ""){
+      var xErrorLabel = new Label("横を2以上入力してください");
       xErrorLabel.font = "14px cursive";
       xErrorLabel.x = 350;
       xErrorLabel.y = 200;
@@ -34,8 +34,8 @@ var StartButton  = Class.create(Sprite,{
       this.isXError = false;
     }
 
-    if(this.maxY.value <= 0 || this.maxY.value == null || this.maxY.value == undefined || this.maxY.value == ""){
-      var yErrorLabel = new Label("縦を１以上入力してください");
+    if(this.maxY.value <= 1 || this.maxY.value == null || this.maxY.value == undefined || this.maxY.value == ""){
+      var yErrorLabel = new Label("縦を2以上入力してください");
       yErrorLabel.font = "14px cursive";
       yErrorLabel.x = 350;
       yErrorLabel.y = 260;
