@@ -21,13 +21,13 @@ window.onload = function () {
     startScene.addChild(titleLabel);
     //
     var xLabel = new Label();
-    xLabel.text = "横の大きさ";
+    xLabel.text = "横のマス数";
     xLabel.x = 230;
     xLabel.y = 130;
     startScene.addChild(xLabel);
 
     var yLabel = new Label();
-    yLabel.text = "縦の大きさ";
+    yLabel.text = "縦のマス数";
     yLabel.y = 130;
     yLabel.x = 400;
     startScene.addChild(yLabel);

@@ -86,3 +86,14 @@ var StartButton  = Class.create(Sprite,{
     GAME.pushScene(mainScene);
   }
 });
+
+//文字列かどうか判定
+function isString(target){
+  var toString = Object.prototype.toStging;
+  if(toString.call(target) === "[object String]"){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
