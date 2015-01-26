@@ -39,8 +39,6 @@ var MassGroup  = Class.create(Group,{
   onopenmass: function(){
     this.openMassCount++;
     if(this.openMassCount > this.safeMassCount){
-      console.log(this.openMassCount);
-      console.log(this.safeMassCount);
       var gameClearLabel = new Label("GameClear");
       gameClearLabel.x = 680;
       gameClearLabel.y = 200;
